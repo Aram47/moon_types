@@ -9,11 +9,11 @@ public:
     std::string __get_type  ()  const override;
     std::string __get_value ()  const override;
 public:
-    virtual std::string operator +  (const Base_Type*) const override;
-    virtual std::string operator -  (const Base_Type*) const override;
-    virtual std::string operator && (const Base_Type*) const override;
-    virtual std::string operator || (const Base_Type*) const override;
-    virtual std::string operator =  (const Base_Type*)       override;
+    Base_Type* operator +   (const Base_Type*) const override;
+    Base_Type* operator -   (const Base_Type*) const override;
+    Base_Type* operator &&  (const Base_Type*) const override;
+    Base_Type* operator ||  (const Base_Type*) const override;
+    Base_Type* operator =   (const Base_Type*)       override;
 
     std::string operator +=  (const Base_Type*);
     std::string operator /=  (const Base_Type*);
@@ -40,7 +40,7 @@ public:
     std::string operator --    ();    // --value
 public:
     Number (const std::string&);
-    Number (const Base_Type*);        // ???????
+    // Number (const Base_Type*);        // ???????
 };
 
 #endif // NUMBER_H

@@ -7,13 +7,11 @@
 class Fundamental_Type : public Base_Type
 {
 public:
-    virtual std::string operator +  (const Base_Type*) const = 0;
-    virtual std::string operator -  (const Base_Type*) const = 0;
-    virtual std::string operator && (const Base_Type*) const = 0;
-    virtual std::string operator || (const Base_Type*) const = 0;
-    virtual std::string operator =  (const Base_Type*)       = 0;
-public:
-    virtual ~Fundamental_Type() {};
+    virtual Base_Type* operator +  (const Base_Type*) const = 0;
+    virtual Base_Type* operator -  (const Base_Type*) const = 0;
+    virtual Base_Type* operator && (const Base_Type*) const = 0;
+    virtual Base_Type* operator || (const Base_Type*) const = 0;
+    virtual Base_Type* operator =  (const Base_Type*)       = 0;
 
     // for class Number and class String
 
@@ -43,7 +41,9 @@ public:
     // virtual std::string operator--() = 0;       // --value
     // virtual std::string operator++(int) = 0;    // value++
     // virtual std::string operator--(int) = 0;    // value--
-
+    
+public:
+    virtual ~Fundamental_Type() {};
 };
 
 #endif // FUNDAMENTAL_TYPE_H

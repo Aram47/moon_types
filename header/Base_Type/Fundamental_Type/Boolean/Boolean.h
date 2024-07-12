@@ -5,7 +5,7 @@
 
 class Boolean : public Fundamental_Type
 {
-
+    
 };
 
 #endif // BOOLEAN_H
