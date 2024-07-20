@@ -5,42 +5,35 @@
 
 class Number : public Fundamental_Type
 {
+    using pair_type_value = std::pair<std::string, std::string>;
 public:
-    std::string __get_type  ()  const override;
-    std::string __get_value ()  const override;
+    // Logic 
+    pair_type_value operator  &&  (const Base_Type&) const override;
+    pair_type_value operator  ||  (const Base_Type&) const override;
+
+    // Ariphmetic
+    pair_type_value operator  +   (const Base_Type&) const override;
+    pair_type_value operator  -   (const Base_Type&) const override; 
+    pair_type_value operator  *   (const Base_Type&) const override;
+    pair_type_value operator  /   (const Base_Type&) const override;
+    pair_type_value operator  %   (const Base_Type&) const override;
+    pair_type_value operator  <<  (const Base_Type&) const override;
+    pair_type_value operator  >>  (const Base_Type&) const override;
+    pair_type_value operator  |   (const Base_Type&) const override;
+    pair_type_value operator  &   (const Base_Type&) const override;
+    pair_type_value operator  ^   (const Base_Type&) const override;
+
+    // // Assignments
+    pair_type_value operator =    (const Base_Type&)       override;
+
+    // // Ariphmetic postfix and prefix inc/dec
+    pair_type_value operator  ++  (int)                    override;    // value++
+    pair_type_value operator  --  (int)                    override;    // value--
+    pair_type_value operator ++   ()                       override;    // ++value
+    pair_type_value operator --   ()                       override;    // --value
 public:
-    Base_Type* operator +   (const Base_Type*) const override;
-    Base_Type* operator -   (const Base_Type*) const override;
-    Base_Type* operator &&  (const Base_Type*) const override;
-    Base_Type* operator ||  (const Base_Type*) const override;
-    Base_Type* operator =   (const Base_Type*)       override;
-
-    std::string operator +=  (const Base_Type*);
-    std::string operator /=  (const Base_Type*);
-    std::string operator *=  (const Base_Type*);
-    std::string operator %=  (const Base_Type*);
-    std::string operator -=  (const Base_Type*);
-
-    std::string operator ^=  (const Base_Type*);
-    std::string operator &=  (const Base_Type*);
-    std::string operator |=  (const Base_Type*);
-
-    std::string operator <<  (const Base_Type*);
-    std::string operator >>  (const Base_Type*);
-    std::string operator <<= (const Base_Type*);
-    std::string operator >>= (const Base_Type*);
-
-    std::string operator *   (const Base_Type*);
-    std::string operator /   (const Base_Type*);
-    std::string operator %   (const Base_Type*);
-
-    std::string operator ++ (int);    // value++
-    std::string operator -- (int);    // value--
-    std::string operator ++    ();    // ++value
-    std::string operator --    ();    // --value
-public:
-    Number (const std::string&);
-    // Number (const Base_Type*);        // ???????
+    Number (const pair_type_value&);
+    Number (const Base_Type&);
 };
 
 #endif // NUMBER_H
