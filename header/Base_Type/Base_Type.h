@@ -18,6 +18,12 @@ public:
     // Logic
     virtual pair_type_value operator &&   (const Base_Type&) const  = 0;
     virtual pair_type_value operator ||   (const Base_Type&) const  = 0;
+    virtual pair_type_value operator ==   (const Base_Type&) const  = 0;
+    virtual pair_type_value operator !=   (const Base_Type&) const  = 0;
+    virtual pair_type_value operator <    (const Base_Type&) const  = 0;
+    virtual pair_type_value operator >    (const Base_Type&) const  = 0;
+    virtual pair_type_value operator <=   (const Base_Type&) const  = 0;
+    virtual pair_type_value operator >=   (const Base_Type&) const  = 0;
 
     // Ariphmetic
     virtual pair_type_value operator  +   (const Base_Type&) const  = 0;

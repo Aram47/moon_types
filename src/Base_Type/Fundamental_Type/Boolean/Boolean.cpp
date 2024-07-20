@@ -68,6 +68,41 @@ Boolean::operator || (const Base_Type& __rhv) const
     return pair_type_value ({"Boolean", "true"});
 }
 
+pair_type_value 
+Boolean::operator == (const Base_Type& __rhv) const
+{
+
+}
+
+pair_type_value 
+Boolean::operator != (const Base_Type& __rhv) const
+{
+
+}
+
+pair_type_value 
+Boolean::operator < (const Base_Type& __rhv) const
+{
+
+}
+
+pair_type_value 
+Boolean::operator > (const Base_Type& __rhv) const
+{
+
+}
+
+pair_type_value 
+Boolean::operator <= (const Base_Type& __rhv) const
+{
+
+}
+
+pair_type_value 
+Boolean::operator >= (const Base_Type& __rhv) const
+{
+
+}
 
 // Ariphmetic
 pair_type_value 

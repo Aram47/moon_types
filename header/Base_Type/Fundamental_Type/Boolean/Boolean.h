@@ -10,6 +10,12 @@ public:
     // Logic 
     pair_type_value operator  &&  (const Base_Type&) const override;
     pair_type_value operator  ||  (const Base_Type&) const override;
+    pair_type_value operator  ==  (const Base_Type&) const override;
+    pair_type_value operator  !=  (const Base_Type&) const override;
+    pair_type_value operator  <   (const Base_Type&) const override;
+    pair_type_value operator  >   (const Base_Type&) const override;
+    pair_type_value operator  <=  (const Base_Type&) const override;
+    pair_type_value operator  >=  (const Base_Type&) const override;
 
     // Ariphmetic
     pair_type_value operator  +   (const Base_Type&) const override;
