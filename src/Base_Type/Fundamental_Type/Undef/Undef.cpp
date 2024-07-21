@@ -5,12 +5,14 @@ using pair_type_value = std::pair<std::string, std::string>;
 // Constructors
 Undef::Undef (const pair_type_value& __inp_value)
 {
-
+    this->__type  = __inp_value.first;
+    this->__value = __inp_value.second;
 }
 
 Undef::Undef (const Base_Type& __other)
 {
-
+    this->__type  = __other.__get_type();
+    this->__value = __other.__get_value();
 }
 
 // Logic 
