@@ -83,36 +83,241 @@ pair_type_value
 Number::operator == (const Base_Type& __rhv) const
 {
 
+    if (
+        (__rhv.__get_type() == "Boolean") &&
+        (this->__value != "NaN")
+       )
+    {
+        if (
+            (
+                (std::stod(this->__value) == 0) &&
+                (__rhv.__get_value() == "false")
+            ) ||
+            (
+                (std::stod(this->__value) == 1) &&
+                (__rhv.__get_value() == "true")
+            )
+           )
+        {
+            return pair_type_value ({"Number", "true"});
+        }
+    }
+
+    if (
+        (this->__value == "NaN") ||
+        (
+            (__rhv.__get_type() == "Number") &&
+            (__rhv.__get_value() == "NaN")
+        ) ||
+        (__rhv.__get_type() != "Number") 
+       )
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    return this->__value == __rhv.__get_value() 
+        ? pair_type_value ({"Boolean", "true"})
+        : pair_type_value ({"Boolean", "false"});
 }
 
 pair_type_value 
 Number::operator != (const Base_Type& __rhv) const
 {
+    if (
+        (__rhv.__get_type() == "Boolean") &&
+        (this->__value != "NaN")
+       )
+    {
+        if (
+            (
+                (std::stod(this->__value) == 0) &&
+                (__rhv.__get_value() == "false")
+            ) ||
+            (
+                (std::stod(this->__value) == 1) &&
+                (__rhv.__get_value() == "true")
+            )
+           )
+        {
+            return pair_type_value ({"Number", "false"});
+        }
+    }
 
+    if (__rhv.__get_type() != "Number")
+    {
+        return pair_type_value ({"Boolean", "true"});
+    }
+
+    if (
+        (__rhv.__get_value() == "NaN") ||
+        (this->__value == "NaN")       ||
+        (this->__value != __rhv.__get_value())
+       )
+    {
+        return pair_type_value ({"Boolean", "true"});
+    }
+
+    return pair_type_value ({"Boolean", "false"});
 }
 
 pair_type_value 
 Number::operator < (const Base_Type& __rhv) const
 {
+    if (
+        (__rhv.__get_type() == "Boolean") &&
+        (this->__value != "NaN")
+       )
+    {
+        if (
+            (
+                (std::stod(this->__value) <= 0) && 
+                (__rhv.__get_value() == "true")
+            ) ||
+            (
+                (std::stod(this->__value) <= 0) &&
+                (__rhv.__get_value() == "false")
+            )
+           )
+        {
+            return pair_type_value ({"Number", "true"});
+        }
+    }
+    
+    if (__rhv.__get_type() != "Number")
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
 
+    if (
+        (__rhv.__get_value() == "NaN") ||
+        (this->__value == "NaN")       ||
+        (std::stod(this->__value) >= std::stod(__rhv.__get_value()))
+       )
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    return pair_type_value ({"Boolean", "true"});
 }
 
 pair_type_value 
 Number::operator > (const Base_Type& __rhv) const
 {
+    if (
+        (__rhv.__get_type() == "Boolean") &&
+        (this->__value != "NaN")
+       )
+    {
+        if (
+            (
+                (std::stod(this->__value) > 0) && // > 0
+                (__rhv.__get_value() == "false")
+            ) ||
+            (
+                (std::stod(this->__value) > 1) && //  > 1
+                (__rhv.__get_value() == "true")
+            )
+           )
+        {
+            return pair_type_value ({"Number", "true"});
+        }
+    }
 
+    if (__rhv.__get_type() != "Number")
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    if (
+        (__rhv.__get_value() == "NaN") ||
+        (this->__value == "NaN")       ||
+        (std::stod(this->__value) <= std::stod(__rhv.__get_value()))
+       )
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    return pair_type_value ({"Boolean", "true"});
 }
 
 pair_type_value 
 Number::operator <= (const Base_Type& __rhv) const
 {
+    if (
+        (__rhv.__get_type() == "Boolean") &&
+        (this->__value != "NaN")
+       )
+    {
+        if (
+            (
+                (std::stod(this->__value) <= 0) &&
+                (__rhv.__get_value() == "false")
+            ) ||
+            (
+                (std::stod(this->__value) <= 1) &&
+                (__rhv.__get_value() == "true")
+            )
+           )
+        {
+            return pair_type_value ({"Number", "true"});
+        }
+    }
 
+    if (__rhv.__get_type() != "Number")
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    if (
+        (__rhv.__get_value() == "NaN") ||
+        (this->__value == "NaN")       ||
+        (std::stod(this->__value) > std::stod(__rhv.__get_value()))
+       )
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    return pair_type_value ({"Boolean", "true"});
 }
 
 pair_type_value 
 Number::operator >= (const Base_Type& __rhv) const
 {
+    if (
+        (__rhv.__get_type() == "Boolean") &&
+        (this->__value != "NaN")
+       )
+    {
+        if (
+            (
+                (std::stod(this->__value) >= 0) &&
+                (__rhv.__get_value() == "false")
+            ) ||
+            (
+                (std::stod(this->__value) >= 1) &&
+                (__rhv.__get_value() == "true")
+            )
+           )
+        {
+            return pair_type_value ({"Number", "true"});
+        }
+    }
 
+    if (__rhv.__get_type() != "Number")
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    if (
+        (__rhv.__get_value() == "NaN") ||
+        (this->__value == "NaN")       ||
+        (std::stod(this->__value) < std::stod(__rhv.__get_value()))
+       )
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
+
+    return pair_type_value ({"Boolean", "true"});
 }
 
 // Ariphmetic
