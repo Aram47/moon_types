@@ -35,8 +35,8 @@ public:
     // // Ariphmetic postfix and prefix inc/dec
     pair_type_value operator  ++  (int)                    override;    // value++
     pair_type_value operator  --  (int)                    override;    // value--
-    pair_type_value operator ++   ()                       override;    // ++value
-    pair_type_value operator --   ()                       override;    // --value
+    pair_type_value operator  ++  ()                       override;    // ++value
+    pair_type_value operator  --  ()                       override;    // --value
 public:
     String (const pair_type_value&);
     String (const Base_Type&);

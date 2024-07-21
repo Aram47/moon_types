@@ -3,61 +3,61 @@
 using pair_type_value = std::pair<std::string, std::string>;
 
 // Constructors
-String::String (const pair_type_value&)
+String::String (const pair_type_value& __inp_value)
 {
 
 }
 
-String::String (const Base_Type&)
+String::String (const Base_Type& __other)
 {
 
 }
 
 // Logic 
 pair_type_value 
-String::operator && (const Base_Type&) const
+String::operator && (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator || (const Base_Type&) const
+String::operator || (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator == (const Base_Type&) const
+String::operator == (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator != (const Base_Type&) const
+String::operator != (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator < (const Base_Type&) const
+String::operator < (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator > (const Base_Type&) const
+String::operator > (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator <= (const Base_Type&) const
+String::operator <= (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator >= (const Base_Type&) const
+String::operator >= (const Base_Type& __rhv) const
 {
 
 }
@@ -65,61 +65,61 @@ String::operator >= (const Base_Type&) const
 
 // Ariphmetic
 pair_type_value 
-String::operator + (const Base_Type&) const
+String::operator + (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator - (const Base_Type&) const
+String::operator - (const Base_Type& __rhv) const
 {
 
 } 
 
 pair_type_value 
-String::operator * (const Base_Type&) const
+String::operator * (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator / (const Base_Type&) const
+String::operator / (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator % (const Base_Type&) const
+String::operator % (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator << (const Base_Type&) const
+String::operator << (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator >> (const Base_Type&) const
+String::operator >> (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator | (const Base_Type&) const
+String::operator | (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator & (const Base_Type&) const
+String::operator & (const Base_Type& __rhv) const
 {
 
 }
 
 pair_type_value 
-String::operator ^ (const Base_Type&) const
+String::operator ^ (const Base_Type& __rhv) const
 {
 
 }
@@ -127,7 +127,7 @@ String::operator ^ (const Base_Type&) const
 
 // Assignments
 pair_type_value 
-String::operator = (const Base_Type&) 
+String::operator = (const Base_Type& __rhv) 
 {
 
 }
