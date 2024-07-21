@@ -46,5 +46,11 @@ int main ()
                   << std::endl;
     }
 
+    for (int i = 0; i < __vec.size(); ++i)
+    {
+        delete __vec[i];
+        __vec[i] = nullptr;
+    }
+
     return 0; 
 }
