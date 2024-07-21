@@ -19,49 +19,87 @@ String::String (const Base_Type& __other)
 pair_type_value 
 String::operator && (const Base_Type& __rhv) const
 {
+    std::string __rhv_type = __rhv.__get_type();
+    if (
+        (__rhv_type == "Undef") ||
+        (__rhv_type == "Null")  ||
+        (
+            (__rhv_type == "Number") &&
+            (
+                (__rhv.__get_value() == "NaN") ||
+                (0 == std::stod(__rhv.__get_value()))
+            )
+        )
+       )
+    {
+        return pair_type_value ({"Boolean", "false"});
+    }
 
+    return pair_type_value ({"Boolean", "true"});
 }
 
 pair_type_value 
 String::operator || (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Boolean", "true"});
 }
 
 pair_type_value 
 String::operator == (const Base_Type& __rhv) const
 {
-
+    return this->__type != __rhv.__get_type()
+        ? pair_type_value ({"Boolean", "false"})
+        : this->__value == __rhv.__get_value()
+        ? pair_type_value ({"Boolean", "true"})
+        : pair_type_value ({"Boolean", "false"});
 }
 
 pair_type_value 
 String::operator != (const Base_Type& __rhv) const
 {
-
+    return ((*this == __rhv).second == "false")
+        ? pair_type_value ({"Boolean", "true"})
+        : pair_type_value ({"Boolean", "false"});
 }
 
 pair_type_value 
 String::operator < (const Base_Type& __rhv) const
 {
-
+    return this->__type != __rhv.__get_type()
+        ? pair_type_value ({"Boolean", "false"})
+        : this->__value < __rhv.__get_value()
+        ? pair_type_value ({"Boolean", "true"})
+        : pair_type_value ({"Boolean", "false"});
 }
 
 pair_type_value 
 String::operator > (const Base_Type& __rhv) const
 {
-
+    return this->__type != __rhv.__get_type()
+        ? pair_type_value ({"Boolean", "false"})
+        : this->__value > __rhv.__get_value()
+        ? pair_type_value ({"Boolean", "true"})
+        : pair_type_value ({"Boolean", "false"});
 }
 
 pair_type_value 
 String::operator <= (const Base_Type& __rhv) const
 {
-
+    return this->__type != __rhv.__get_type()
+        ? pair_type_value ({"Boolean", "false"})
+        : this->__value <= __rhv.__get_value()
+        ? pair_type_value ({"Boolean", "true"})
+        : pair_type_value ({"Boolean", "false"});
 }
 
 pair_type_value 
 String::operator >= (const Base_Type& __rhv) const
 {
-
+    return this->__type != __rhv.__get_type()
+        ? pair_type_value ({"Boolean", "false"})
+        : this->__value >= __rhv.__get_value()
+        ? pair_type_value ({"Boolean", "true"})
+        : pair_type_value ({"Boolean", "false"});
 }
 
 
@@ -69,61 +107,71 @@ String::operator >= (const Base_Type& __rhv) const
 pair_type_value 
 String::operator + (const Base_Type& __rhv) const
 {
+    std::string __rhv_type = __rhv.__get_type();
+    if (
+        (__rhv_type == "Object") ||
+        (__rhv_type == "Array")  ||
+        (__rhv_type == "Function")
+       )
+    {
+        return pair_type_value ({"Number", "NaN"});
+    }
 
+    return pair_type_value ({"String", this->__value + __rhv.__get_value()});
 }
 
 pair_type_value 
 String::operator - (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 } 
 
 pair_type_value 
 String::operator * (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator / (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator % (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator << (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator >> (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator | (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator & (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator ^ (const Base_Type& __rhv) const
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 
@@ -131,7 +179,10 @@ String::operator ^ (const Base_Type& __rhv) const
 pair_type_value 
 String::operator = (const Base_Type& __rhv) 
 {
-
+    return pair_type_value ({
+        "String",
+        this->__value = std::move(__rhv.__get_value())
+    });
 }
 
 
@@ -139,23 +190,31 @@ String::operator = (const Base_Type& __rhv)
 pair_type_value 
 String::operator ++ (int)    // value++
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator -- (int)    // value--
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator ++ ()       // ++value
 {
-
+    return pair_type_value ({"Number", "NaN"});
 }
 
 pair_type_value 
 String::operator -- ()       // --value
 {
+    return pair_type_value ({"Number", "NaN"});
+}
 
+pair_type_value 
+String::operator [] (int __index)
+{
+    return __index >= (this->__value).size()
+        ? pair_type_value ({"String", ""})
+        : pair_type_value ({"String", std::string{(this->__value)[__index]}});
 }

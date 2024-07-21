@@ -37,6 +37,8 @@ public:
     pair_type_value operator  --  (int)                    override;    // value--
     pair_type_value operator  ++  ()                       override;    // ++value
     pair_type_value operator  --  ()                       override;    // --value
+
+    pair_type_value operator  []  (int);
 public:
     String (const pair_type_value&);
     String (const Base_Type&);
