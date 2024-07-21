@@ -353,6 +353,13 @@ Number::operator + (const Base_Type& __rhv) const
         return pair_type_value ({"String", this->__value + __rhv.__get_value()});
     }
 
+    if (__rhv_type == "Boolean")
+    {
+        return __rhv.__get_value() == "true"
+            ? pair_type_value ({"Number", std::to_string(std::stod(this->__value) + 1)})
+            : pair_type_value ({"Number", this->__value});
+    }
+
     // if (__rhv_type == "Array")
     // {
 
@@ -368,6 +375,16 @@ pair_type_value
 Number::operator - (const Base_Type& __rhv) const
 {
     std::string __rhv_type = __rhv.__get_type();
+
+    if (
+        (this->__value != "NaN") &&
+        (__rhv_type == "Boolean")
+       )
+    {
+        return __rhv.__get_value() == "false"
+            ? pair_type_value ({"Number", this->__value})
+            : pair_type_value ({"Number", std::to_string(std::stod(this->__value) - 1)});
+    }
 
     if (
         (__rhv_type != "Number")    ||
